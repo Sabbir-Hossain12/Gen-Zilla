@@ -179,18 +179,18 @@
 
                                 @endif
 
-                                <ul class="product-icons-show">
-                                    <li>
-                                        <a href="#">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </li>
-                                </ul>
+{{--                                <ul class="product-icons-show">--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">--}}
+{{--                                            <i class="ri-heart-line"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">--}}
+{{--                                            <i class="ri-eye-line"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul>--}}
                                 <!-- End. product-icons-show -->
                             </div><!-- End. product-image -->
 
@@ -257,18 +257,18 @@
 
                                 @endif
 
-                                <ul class="product-icons-show">
-                                    <li>
-                                        <a href="#">
-                                            <i class="ri-heart-line"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="ri-eye-line"></i>
-                                        </a>
-                                    </li>
-                                </ul><!-- End. product-icons-show -->
+{{--                                <ul class="product-icons-show">--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">--}}
+{{--                                            <i class="ri-heart-line"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                    <li>--}}
+{{--                                        <a href="#">--}}
+{{--                                            <i class="ri-eye-line"></i>--}}
+{{--                                        </a>--}}
+{{--                                    </li>--}}
+{{--                                </ul><!-- End. product-icons-show -->--}}
                             </div><!-- End. product-image -->
 
                             <div class="product-info">
@@ -383,18 +383,18 @@
 
                                     @endif
 
-                                    <ul class="product-icons-show">
-                                        <li>
-                                            <a href="#">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </li>
-                                    </ul><!-- End. product-icons-show -->
+{{--                                    <ul class="product-icons-show">--}}
+{{--                                        <li>--}}
+{{--                                            <a href="#">--}}
+{{--                                                <i class="ri-heart-line"></i>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="#">--}}
+{{--                                                <i class="ri-eye-line"></i>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul><!-- End. product-icons-show -->--}}
                                 </div><!-- End. product-image -->
 
                                 <div class="product-info">
@@ -461,18 +461,18 @@
 
                                     @endif
 
-                                    <ul class="product-icons-show">
-                                        <li>
-                                            <a href="#">
-                                                <i class="ri-heart-line"></i>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="ri-eye-line"></i>
-                                            </a>
-                                        </li>
-                                    </ul><!-- End. product-icons-show -->
+{{--                                    <ul class="product-icons-show">--}}
+{{--                                        <li>--}}
+{{--                                            <a href="#">--}}
+{{--                                                <i class="ri-heart-line"></i>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                        <li>--}}
+{{--                                            <a href="#">--}}
+{{--                                                <i class="ri-eye-line"></i>--}}
+{{--                                            </a>--}}
+{{--                                        </li>--}}
+{{--                                    </ul><!-- End. product-icons-show -->--}}
                                 </div><!-- End. product-image -->
 
                                 <div class="product-info">
@@ -537,12 +537,12 @@
                 </div><!-- End. subscription-details -->
 
 
-                <div class="subscription">
-                    <form action="">
-                        <input type="text" class="subscription-form" placeholder="Your email address">
-                        <button class="btns default_btn btn_position">Subscriptions</button>
-                    </form>
-                </div><!-- End. subscription -->
+{{--                <div class="subscription">--}}
+{{--                    <form action="">--}}
+{{--                        <input type="text" class="subscription-form" placeholder="Your email address">--}}
+{{--                        <button class="btns default_btn btn_position">Subscriptions</button>--}}
+{{--                    </form>--}}
+{{--                </div><!-- End. subscription -->--}}
             </div><!-- End. row -->
         </div><!-- End. container -->
     </section>

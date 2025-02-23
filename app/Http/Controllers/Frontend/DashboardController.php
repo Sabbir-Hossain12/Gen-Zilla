@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -18,10 +19,18 @@ class DashboardController extends Controller
         return view('frontend.pages.dashboard.user-dashboard', compact('user', 'total_orders', 'pending_orders','wishlists'));
     }
 
+    public function orderDetails(string $id)
+    {
+        $order=Order::where('id',$id)->with('orderProducts','customer','products')->first();
+        
+//        dd($order);
+        return view('frontend.pages.dashboard.order-details', compact('order'));
+    }
+
 
     public function updateProfileImage(Request $request)
     {
-//        dd($request->all());
+//      dd($request->all());
         $user = User::find(auth()->user()->id);
         if ($request->hasFile('profile_pic')) {
             if ($user->profile_pic && file_exists($user->profile_pic)) {
@@ -47,6 +56,7 @@ class DashboardController extends Controller
     }
     public function updateProfileDetails(Request $request)
     {
+//        dd($request->all());
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|email|string',
@@ -54,6 +64,9 @@ class DashboardController extends Controller
             'address' => 'string',
             'state_district' => 'string|max:255',
             'zip_code' => 'string|max:255',
+            'thana' => 'string|max:255',
+            'area' => 'string|max:255',
+            'gender' => 'string|max:255',
         ]);
         
         $user = User::find(auth()->user()->id);
@@ -64,6 +77,9 @@ class DashboardController extends Controller
         $user->address = $request->address;
         $user->state_district = $request->state_district;
         $user->zip_code = $request->zip_code;
+        $user->thana = $request->thana;
+        $user->area = $request->area;
+        $user->gender = $request->gender;
         $user->save();
         
         return response()->json(['message' => 'Profile Details Updated Successfully'],200);

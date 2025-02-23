@@ -13,10 +13,12 @@ use App\Http\Controllers\Backend\BrandsController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\CouponController;
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DeliveryChargeController;
 use App\Http\Controllers\Backend\OrderController;
 use App\Http\Controllers\Backend\PagesController;
 use App\Http\Controllers\Backend\ProductsController;
 use App\Http\Controllers\Backend\ProfileController;
+use App\Http\Controllers\Backend\ReportController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\Backend\SubcategoryController;
@@ -168,7 +170,9 @@ Route::prefix('admin')->middleware('admin')->group(function () {
 
     //______ Settings _____//
     Route::resource('/basic-info', BasicinfoController::class)->names('admin.basic');
-
+    Route::resource('/delivery-charges', DeliveryChargeController::class)->names('admin.delivery');
+    Route::post('/change-delivery-status', [DeliveryChargeController::class, 'changeDeliveryStatus'])->name('admin.delivery.status');
+    
     //______ Review _____//
     Route::resource('/reviews', ReviewController::class)->names('admin.reviews');
     Route::get('/review-data', [ReviewController::class, 'getData'])->name('admin.review-data');
@@ -177,5 +181,8 @@ Route::prefix('admin')->middleware('admin')->group(function () {
     //______ Theme Color _____//
     Route::resource('/theme-colors', ThemeColorController::class)->names('admin.theme');
     
+    //______Report_________//
+    Route::get('/sales-report', [ReportController::class, 'salesReport'])->name('admin.sales.report');
+    Route::get('/category-sales-report', [ReportController::class, 'categorySalesReport'])->name('admin.category-sales.report');
     
 });

@@ -321,6 +321,12 @@
                             </a>
                         </li>
 
+                        <li>
+                            <a href="{{route('admin.delivery.index')}}">
+                                <span data-key="t-calendar">Delivery Settings</span>
+                            </a>
+                        </li>
+
 
                     </ul>
                 </li>
@@ -350,31 +356,55 @@
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow">
-                        <i class="fa-solid fa-file"></i>
-                        <span data-key="t-dashboard">API Integrations</span>
+                        <i class="fa-solid fa-file-pdf"></i>
+                        <span data-key="t-dashboard">Reports</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li>
-                            <a href="">
-                                <span data-key="t-calendar">Payment Gateways</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <span data-key="t-calendar">SMS Gateways</span>
+                            <a href="{{route('admin.sales.report')}}">
+                                <span data-key="t-calendar">Sales Report (overall)</span>
                             </a>
                         </li>
 
                         <li>
-                            <a href="">
-                                <span data-key="t-calendar">Courier Gateways</span>
+                            <a href="{{route('admin.category-sales.report')}}">
+                                <span data-key="t-calendar">Sales Report (Category)</span>
                             </a>
                         </li>
+                    
 
 
                     </ul>
 
                 </li>
+
+{{--                <li>--}}
+{{--                    <a href="javascript: void(0);" class="has-arrow">--}}
+{{--                        <i class="fa-solid fa-file"></i>--}}
+{{--                        <span data-key="t-dashboard">API Integrations</span>--}}
+{{--                    </a>--}}
+{{--                    <ul class="sub-menu" aria-expanded="false">--}}
+{{--                        <li>--}}
+{{--                            <a href="">--}}
+{{--                                <span data-key="t-calendar">Payment Gateways</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="">--}}
+{{--                                <span data-key="t-calendar">SMS Gateways</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+
+{{--                        <li>--}}
+{{--                            <a href="">--}}
+{{--                                <span data-key="t-calendar">Courier Gateways</span>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+
+
+{{--                    </ul>--}}
+
+{{--                </li>--}}
 
 
             </ul>

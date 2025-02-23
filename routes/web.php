@@ -70,6 +70,7 @@ Route::post('/update-profile-image',[DashboardController::class,'updateProfileIm
 Route::get('/get-profile-details',[DashboardController::class,'getProfileDetails'])->name('get.profile.details');
 Route::post('/update-profile-details',[DashboardController::class,'updateProfileDetails'])->name('update.profile.details');
 Route::post('/update-password',[DashboardController::class,'updatePassword'])->name('update.password');
+Route::get('/order-details/{id}',[DashboardController::class,'orderDetails'])->name('order.details');
 // SSLCOMMERZ 
 Route::post('/success', [SslCommerzPaymentController::class, 'success']);
 Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);

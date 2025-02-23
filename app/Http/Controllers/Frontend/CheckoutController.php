@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Coupon;
+use App\Models\DeliveryCharge;
 use App\Models\Order;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -13,7 +14,8 @@ class CheckoutController extends Controller
 {
     public function index()
     {
-        return view('frontend.pages.products.checkout');
+        $deliveryCharges= DeliveryCharge::where('status',1)->get();
+        return view('frontend.pages.products.checkout',compact('deliveryCharges'));
     }
 
 

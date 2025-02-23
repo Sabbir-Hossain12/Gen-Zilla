@@ -85,18 +85,19 @@
                                   
 
                                     <div class="mb-3">
-                                        <label for="subcategory_id" class="form-label">Subcategory *</label>
+                                        <label for="subcategory_id" class="form-label">Subcategory </label>
                                         <select class="form-control" name="subcategory_id" id="subcategory_id">
                                             
                                           
                                         </select>
                                     </div>
-
-                                
                                     
-                                    
-                                
+                                    <div class="mb-3">
+                                        <label for="purchase_price" class="form-label">Purchase Price *</label>
+                                        <input class="form-control" type="number" name="purchase_price" min="1" placeholder="purchase_price"
+                                               id="purchase_price" value="">
 
+                                        
                                 </div>
                             </div>
                         </div>

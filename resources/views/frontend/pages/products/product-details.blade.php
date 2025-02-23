@@ -272,14 +272,14 @@
                                            value="{{ asset($product->productDetail->productThumbnail_img) }}">
 
                                     @if(count($product->sizes)>0)
-                                        <input type="hidden" id="pSize" name="price"
+                                        <input  type="number" hidden="" id="pSize" name="price"
                                                value="{{ $product->sizes[0]->productSalePrice }}">
                                     @elseif(count($product->colors)>0)
-                                        <input id="pColor" type="hidden" name="product_price"
+                                        <input id="pColor" type="number" hidden="" name="price"
                                                value="{{ $product->colors[0]->productSalePrice }}">
 
                                     @elseif(count($product->weights)>0)
-                                        <input id="pWeight" type="hidden" name="product_price"
+                                        <input id="pWeight" type="number" hidden="" name="price"
                                                value="{{ $product->weights[0]->productSalePrice }}">
                                     @endif
                                     <input type="hidden" name="color" id="product_color">

@@ -156,6 +156,7 @@ class CategoryController extends Controller
         $category->front_status           = $request->front_status;
         $category->topCategory_status     = $request->topCategory_status;
         $category->status                 = $request->status;
+        $category->gender                 = $request->gender;
         
         
         if( $request->file('category_img') ){
@@ -203,6 +204,7 @@ class CategoryController extends Controller
          $category->front_status           = $request->front_status;
          $category->topCategory_status     = $request->topCategory_status;
          $category->status                 = $request->status;
+         $category->gender                 = $request->gender;
 
          if( $request->file('category_img_path') ){
              $images = $request->file('category_img_path');

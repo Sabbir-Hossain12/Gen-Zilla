@@ -11,25 +11,22 @@
 @endpush
 
 @section('contents')
+
     <div class="row">
         <div class="col-12">
             <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                {{--                <h4 class="mb-sm-0 font-size-18">Admins</h4>--}}
+                <h4 class="mb-sm-0 font-size-18">Delivery Charges</h4>
 
                 <div class="page-title-right">
                     <ol class="breadcrumb m-0">
                         <li class="breadcrumb-item"><a href="javascript: void(0);">Pages</a></li>
-                        <li class="breadcrumb-item active">Admins</li>
+                        <li class="breadcrumb-item active">Delivery Charge</li>
                     </ol>
                 </div>
 
             </div>
         </div>
     </div>
-    
-    @include('backend.include.order-dashboard')
-
-
 
     {{-- Table Starts--}}
 
@@ -39,28 +36,28 @@
                 <div class="card-header">
 
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4 class="card-title">All Orders</h4>
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAdminModal">
-                            Create Orders
-                        </button>
+                        <h4 class="card-title">Delivery Charge List</h4>
+                        {{--                       @can('Create Admin')--}}
+{{--                        @if(Auth::guard('admin')->user()->can('Create Admin'))--}}
+                            <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#createAdminModal">
+                                Add Delivery Charge
+                            </button>
+                            {{--                        @endcan--}}
+{{--                        @endif--}}
                     </div>
 
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table mb-0   w-100 dataTable no-footer dtr-inline text-center" id="orderTable">
+                        <table class="table mb-0  nowrap w-100 dataTable no-footer dtr-inline" id="adminTable">
                             <thead>
                             <tr>
                                 <th>SL</th>
-                                <th>Invoice ID</th>
-                                <th>Date</th>
-                                <th>Customer Info</th>
-                                <th>Product Info</th>
-                                <th>Total Amount</th>
-                                <th>Order Status</th>
-                                <th>Payment Status</th>
-                                <th>Payment Method</th>
+                                <th>Delivery Title</th>
+                                <th>Delivery Charge</th>
+                                <th>Status</th>
                                 <th>Actions</th>
+
                             </tr>
                             </thead>
                             <tbody>
@@ -79,7 +76,7 @@
 
     {{--    Table Ends--}}
 
-    {{--    Create Categories Modal--}}
+    {{--    Create Delivery Charge Modal--}}
     <div class="modal fade" id="createAdminModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
@@ -93,30 +90,15 @@
                         @csrf
 
                         <div class="mb-3">
-                            <label for="Name" class="col-form-label">Name</label>
-                            <input type="text" class="form-control" id="Name" name="name">
-                        </div>
-                        <div class="mb-3">
-                            <label for="email" class="col-form-label">Email</label>
-                            <input type="text" class="form-control" id="email" name="email">
+                            <label for="delivery_title" class="col-form-label">Delivery title</label>
+                            <input type="text" class="form-control" id="delivery_title" name="delivery_title">
                         </div>
                         
                         <div class="mb-3">
-                            <label for="phone" class="col-form-label">Phone</label>
-                            <input type="text" class="form-control" id="phone" name="phone">
+                            <label for="delivery_charge" class="col-form-label">Delivery Charge</label>
+                            <input type="number" class="form-control" id="delivery_charge" name="delivery_charge">
                         </div>
                         
-                        <div class="mb-3">
-                            <label for="type" class="col-form-label">Role</label>
-                            <input type="text" class="form-control" name="type" id="type">
-                        </div>
-                        
-                        <div class="mb-3">
-                            <label for="password" class="col-form-label">Password</label>
-                            <input type="password" class="form-control" name="password" id="password">
-                        </div>
-
-
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
@@ -128,7 +110,7 @@
         </div>
     </div>
 
-    {{--    Edit Categories Modal--}}
+    {{--    Edit Delivery Charge Modal--}}
     <div class="modal fade" id="editAdminModal" tabindex="-1" aria-labelledby="exampleModalLabel"
          style="display: none;" aria-hidden="true">
         <div class="modal-dialog">
@@ -141,32 +123,24 @@
                     <form name="form2" id="editAdmin">
                         @csrf
                         @method('PUT')
+                        
                         <div class="mb-3">
-                            <label for="eName" class="col-form-label">Name</label>
-                            <input type="text" id="eName" class="form-control" name="name">
+                            <label for="eDelivery_title" class="col-form-label">Delivery title</label>
+                            <input type="text" class="form-control" id="eDelivery_title" name="delivery_title">
                         </div>
+                        
                         <div class="mb-3">
-                            <label for="eEmail" class="col-form-label">Email</label>
-                            <input type="text" id="eEmail" class="form-control" name="email">
+                            <label for="eDelivery_charge" class="col-form-label">Delivery Charge</label>
+                            <input type="number" class="form-control" id="eDelivery_charge" name="delivery_charge">
                         </div>
-                        <div class="mb-3">
-                            <label for="ePhone" class="col-form-label">Phone</label>
-                            <input type="text" id="ePhone" class="form-control" name="phone">
-                        </div>
-                        <div class="mb-3">
-                            <label for="eType" class="col-form-label">Role</label>
-                            <input type="text" id="eType" class="form-control" name="type">
-                        </div>
-                        <div class="mb-3">
-                            <label for="ePassword" class="col-form-label">Password</label>
-                            <input type="password" id="ePassword" class="form-control" name="password">
-                        </div>
+                        
                         <input id="id" type="number" hidden>
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
+                        
                         <input type="hidden" name="_token" value="{{ csrf_token() }}"/>
                     </form>
                 </div>
@@ -189,111 +163,41 @@
             var token = $("input[name='_token']").val();
 
             //Show Data through Datatable 
-            let orderTable = $('#orderTable').DataTable({
+            let adminTable = $('#adminTable').DataTable({
                 order: [
                     [0, 'asc']
                 ],
                 processing: true,
                 serverSide: true,
-                
-                ajax: "{{route('admin.order.all.data')}}",
+                {{--ajax: "{{url('/admin/data')}}",--}}
+                ajax: "{{route('admin.delivery.index')}}",
                 // pageLength: 30,
 
                 columns: [
                     {
-                        data: 'DT_RowIndex',
+                        data: 'id',
 
 
                     },
                     {
-                        data: 'invoiceID',
+                        data: 'delivery_title',
 
                     },
                     {
-                        data: 'date',
-                        width:'10%'
-                      
+                        data: 'delivery_charge',
 
                     },
+                   
                     {
-                        data: 'customerInfo',
-                        width:'15%'
-
-                    },
-                    
-                    // {
-                    //     data: 'address',
-                    //     width: '10%'
-                    // },
-                    
-                    {
-                        data: 'productInfo',
-                        width: '20%'
-                        // render: function (data) {
-                        //     return data.slice(0,5); 
-                        // }
-
-                    },
-                    {
-                        data: 'total',
-                        render: function (data) {
-                            return data +' TK';
-                        },
-
-                    },
-                    
-                    {
-                        data: 'order_status',
+                        data: 'status',
+                        name: 'Status',
                         orderable: false,
-                        width: '10%',
-                        render: function (data, type, row) {
-                            let statuses = ['Pending', 'Processing', 'Shipped','Dropped_Off','Out_Delivery','Delivered', 'Cancelled']; // Example statuses
-                            let options = '';
-
-                            statuses.forEach(function(status) {
-                                let selected = (status === data) ? 'selected' : '';
-                                options += `<option value="${status}" ${selected}>${status}</option>`;
-                            });
-
-                            return `<select class="form-control form-select" onchange="orderStatusChange(${row.id},this.value)">
-                                    ${options}
-                                    </select>`;
-                        }
-
+                        searchable: false,
                     },
-                    
-                    {
-                        data: 'payment_status',
-                        orderable: false,
-                        width: '10%',
-                        render: function (data, type, row) {
-                            let statuses = ['Paid','Pending']; // Example statuses
-                            let options = '';
-
-                            statuses.forEach(function(status) {
-                                let selected = (status === data) ? 'selected' : '';
-                                options += `<option value="${status}" ${selected}>${status}</option>`;
-                            });
-
-                            return `<select class="form-control form-select" onchange="orderPaymentStatusChange(${row.id},this.value)">
-                                    ${options}
-                                    </select>`;
-                        }
-                       
-
-                    },
-                    {
-                        data:'payment_method', 
-                        orderable: false,
-                        render:function (data)
-                        {
-                          return `<span class="badge badge-lg bg-success px-2">${data}</span>`
-                        }
-                    },
-                 
 
                     {
                         data: 'action',
+                        name: 'Actions',
                         orderable: false,
                         searchable: false
                     },
@@ -302,7 +206,7 @@
             });
 
 
-            // Create Admin
+            // Add Delivery Charge
             $('#createAdmin').submit(function (e) {
                 e.preventDefault();
 
@@ -313,7 +217,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ route('admin.admins.store') }}",
+                    url: "{{ route('admin.delivery.store') }}",
                     data: formData,
                     processData: false,  // Prevent jQuery from processing the data
                     contentType: false,  // Prevent jQuery from setting contentType
@@ -321,10 +225,10 @@
                         if (res.message === 'success') {
                             $('#createAdminModal').modal('hide');
                             $('#createAdmin')[0].reset();
-                            orderTable.ajax.reload()
+                            adminTable.ajax.reload()
                             swal.fire({
                                 title: "Success",
-                                text: "Admin Created !",
+                                text: "Delivery Charge Created !",
                                 icon: "success"
                             })
 
@@ -343,7 +247,7 @@
                 });
             });
 
-            // Read Admin Data
+            // Edit Admin Data
             $(document).on('click', '.editButton', function () {
                 let id = $(this).data('id');
                 $('#id').val(id);
@@ -354,7 +258,7 @@
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                         },
-                        url: "{{ url('admin/admins') }}/" + id + "/edit",
+                        url: "{{ url('admin/delivery-charges') }}/" + id + "/edit",
                         data: {
                             id: id
                         },
@@ -362,14 +266,10 @@
                         processData: false,  // Prevent jQuery from processing the data
                         contentType: false,  // Prevent jQuery from setting contentType
                         success: function (res) {
-
-                            console.log('success')
-                            $('#eName').val(res.data.name);
-                            $('#eEmail').val(res.data.email);
-                            $('#ePhone').val(res.data.phone);
-                            $('#eType').val(res.data.type);
-
-
+                            
+                            $('#eDelivery_title').val(res.data.delivery_title);
+                            $('#eDelivery_charge').val(res.data.delivery_charge);
+                            
                         },
                         error: function (err) {
                             console.log('failed')
@@ -378,7 +278,7 @@
                 )
             })
 
-            // Edit Admin Data
+            // Update Delivery Data
             $('#editAdmin').submit(function (e) {
                 e.preventDefault();
                 let id = $('#id').val();
@@ -389,7 +289,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "{{ url('admin/admins') }}/" + id,
+                    url: "{{ url('admin/delivery-charges') }}/" + id,
                     data: formData,
                     processData: false,  // Prevent jQuery from processing the data
                     contentType: false,  // Prevent jQuery from setting contentType
@@ -397,14 +297,12 @@
                         if (res.message === 'success') {
                             $('#editAdminModal').modal('hide');
                             $('#editAdmin')[0].reset();
-                            orderTable.ajax.reload()
+                            adminTable.ajax.reload()
                             swal.fire({
                                 title: "Success",
-                                text: "Admin Edited !",
+                                text: "Delivery Charge Updated !",
                                 icon: "success"
                             })
-
-
                         }
                     },
                     error: function (err) {
@@ -440,7 +338,7 @@
                             $.ajax({
                                 type: 'DELETE',
 
-                                url: "{{ url('admin/admins') }}/" + id,
+                                url: "{{ url('admin/delivery-charges') }}/" + id,
                                 data: {
                                     '_token': token
                                 },
@@ -451,7 +349,7 @@
                                         icon: "success"
                                     });
 
-                                    orderTable.ajax.reload();
+                                    adminTable.ajax.reload();
                                 },
                                 error: function (err) {
                                     console.log('error')
@@ -476,7 +374,7 @@
                 $.ajax(
                     {
                         type: 'post',
-                        url: "{{route('admin.status')}}",
+                        url: "{{route('admin.delivery.status')}}",
                         data: {
                             '_token': token,
                             id: id,
@@ -484,7 +382,7 @@
 
                         },
                         success: function (res) {
-                            orderTable.ajax.reload();
+                            adminTable.ajax.reload();
 
                             if (res.status == 1) {
 
@@ -509,53 +407,6 @@
                 )
             })
         });
-
-        // Change Order Status
-        function orderStatusChange(id,status)
-        {
-            // let order_id = id;
-            // let order_status = status;
-
-            $.ajax({
-                type: 'POST',
-
-                url: "{{ route('admin.order.status.change') }}",
-                data: {
-                    order_id:id,
-                    order_status:status
-                },
-                success: function (res) {
-
-                    toastr.success(res.message);
-                    orderTable.ajax.reload();
-                },
-                error: function (err) {
-                    console.log('error')
-                }
-            })
-
-        }
-        
-        function orderPaymentStatusChange(id,status)
-        {
-            $.ajax({
-                type: 'POST',
-
-                url: "{{ route('admin.payment.status.change') }}",
-                data: {
-                    order_id:id,
-                    order_payment_status:status
-                },
-                success: function (res) {
-                    toastr.success(res.message);
-                    orderTable.ajax.reload();
-                },
-                error: function (err) {
-                    console.log('error')
-                }
-            })
-            
-        }
     </script>
 
 @endpush

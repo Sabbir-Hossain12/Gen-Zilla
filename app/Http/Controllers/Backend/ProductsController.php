@@ -174,6 +174,8 @@ class ProductsController extends Controller
             $productDetails->initial_stock = $request->initial_stock;
             $productDetails->total_qty = $request->initial_stock;
             $productDetails->available_qty = $request->initial_stock;
+            $productDetails->purchase_price = $request->purchase_price;
+            
 
 
 //            $imageFields = ['productImg_1', 'productImg_2', 'productImg_3'];
@@ -331,6 +333,7 @@ class ProductsController extends Controller
             $productDetails->sold_qty = $request->sold_qty;
             $productDetails->total_qty = $request->total_qty;
             $productDetails->available_qty = $request->available_qty;
+            $productDetails->purchase_price = $request->purchase_price;
 
 
             $manager = new ImageManager(new Driver());

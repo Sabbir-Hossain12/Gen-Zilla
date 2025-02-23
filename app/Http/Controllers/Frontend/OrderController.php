@@ -45,6 +45,26 @@ class OrderController extends Controller
         }
         DB::beginTransaction();
         try {
+//            dd($request->all());
+            
+//            $request->validate([
+//                'first_name' => ['required', 'string', 'max:255'],
+//                'last_name' => ['string', 'max:255'],
+//                'company_name' => ['string', 'max:255'],
+//                'address_1' => ['required', 'string', 'max:255'],
+//                'address_2' => ['string', 'max:255'],
+//                'state_district' => ['string', 'max:255'],
+//                'zip' => ['required', 'string', 'max:255'],
+//                'country' => ['required', 'string', 'max:255'],
+//                'phone' => ['string', 'max:255'],
+//                'email' => ['string', 'email', 'max:255'],
+//                'area' => ['string', 'max:255'],
+//                'thana' => ['string', 'max:255'],
+//                'gender' => ['string', 'max:255'],
+//                
+//            ]);
+            
+            
 //           Create Customer
             $customer = new Customer();
             $customer->first_name = $request->first_name;
@@ -57,6 +77,9 @@ class OrderController extends Controller
             $customer->country = $request->country;
             $customer->phone = $request->phone;
             $customer->email = $request->email;
+            $customer->area = $request->area;
+            $customer->thana = $request->thana;
+            $customer->gender = $request->gender;
 
             $customer->save();
 
@@ -100,6 +123,7 @@ class OrderController extends Controller
                 $orderProduct->color = $cartItem->options->color;
                 $orderProduct->size = $cartItem->options->size;
                 $orderProduct->weight = $cartItem->options->weight;
+                $orderProduct->purchase_price = $cartItem->options->purchase_price;
                 $orderProduct->save();
             }
 
@@ -154,6 +178,7 @@ class OrderController extends Controller
             return view('frontend.pages.orders.order-success', compact('order' ));
         } catch (Exception $exception) {
             DB::rollBack();
+            
             dd($exception->getMessage());
         }
     }

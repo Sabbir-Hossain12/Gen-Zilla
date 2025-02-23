@@ -119,7 +119,7 @@
                             </li>
                             <li>
                                 <div class="menu-dropdown">
-                                    <a href="">Shop</a>
+                                    <a href="javascript:0;">Shop</a>
 
                                     <div class="catSub-show">
                                         <ul class="category_menu">
@@ -148,9 +148,9 @@
                                     </div>
                                 </div>
                             </li>
-                            <li>
-                                <a href="">Blog</a>
-                            </li>
+{{--                            <li>--}}
+{{--                                <a href="">Blog</a>--}}
+{{--                            </li>--}}
                             <li>
                                 <a href="{{route('about')}}">About Us</a>
                             </li>
@@ -349,9 +349,9 @@
                         <li>
                             <a href="">Shop</a>
                         </li>
-                        <li>
-                            <a href="">Blog</a>
-                        </li>
+{{--                        <li>--}}
+{{--                            <a href="">Blog</a>--}}
+{{--                        </li>--}}
                         <li>
                             <a href="">About Us</a>
                         </li>

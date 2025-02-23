@@ -54,6 +54,7 @@
                         <th>#SL.</th>
                         <th>Category Image</th>
                         <th>Category Name</th>
+                        <th>Gender</th>
                         <th>Front Status</th>
                         <th>TopCategory Status</th>
                         <th>Status</th>
@@ -87,6 +88,13 @@
                                 <label for="category_name" class="form-label">Category Name</label>
                                 <input class="form-control" id="category_name" type="text" name="category_name"
                                        required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
                             </div>
 
                             <div class="mb-3">
@@ -160,6 +168,14 @@
                             <div class="mb-3">
                                 <label for="category_name" class="form-label">Category Name</label>
                                 <input class="form-control" id="up_cat_name" type="text" name="category_name" required>
+                            </div>
+
+                            <div class="mb-3">
+                                <label class="form-label">Gender</label>
+                                <select class="form-select" id="catGender" name="gender">
+                                    <option value="male">Male</option>
+                                    <option value="female">Female</option>
+                                </select>
                             </div>
 
                             <div class="mb-3">
@@ -249,6 +265,9 @@
                     },
                     {
                         data: 'category_name',
+                    },
+                    {
+                        data: 'gender',
                     },
                     {
                         data: 'frontStatus',
@@ -447,6 +466,8 @@
                         $('#id').val(data.id);
                         $('#up_cat_name').val(data.category_name);
                         $('#up_front_status').val(data.front_status);
+                        $('#catGender').val(data.gender);
+                        
                         $('#imageShow').html('');
                         $('#imageShow').append(`
                          <img src={{ asset("`+ data.category_img_path +`") }} alt="" style="width: 75px;">

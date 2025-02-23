@@ -66,80 +66,106 @@
                                 <div class="checkout-form">
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 mb-3">
-                                            <label for="" class="form-labels">First name</label>
+                                            <label for="" class="form-labels">First name *</label>
                                             <input type="text" name="first_name" class="normal-forms" id=""
-                                                   value="{{Auth::user()->name ?? ''}}" placeholder="Your first name"
+                                                   value="{{Auth::user()->name ?? old('first_name')}}" placeholder="Your first name"
                                                    required>
                                         </div>
 
                                         <div class="col-lg-4 col-md-4 mb-3">
                                             <label for="" class="form-labels">Last name</label>
-                                            <input type="text" name="last_name" class="normal-forms" id=""
+                                            <input type="text" name="last_name" class="normal-forms" id="" value="{{old('last_name') ?? ''}}"
                                                    placeholder="Your last name">
                                         </div>
 
                                         <div class="col-lg-4 col-md-4 mb-3">
                                             <label for="" class="form-labels">Company name</label>
-                                            <input type="text" name="company_name" class="normal-forms" id=""
+                                            <input type="text" name="company_name" class="normal-forms" id="" value="{{old('company_name') ?? ''}}"
                                                    placeholder="Company name">
                                         </div>
                                     </div>
 
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 mb-3">
+                                            <label for="" class="form-labels">Email *</label>
+                                            <input type="email" name="email" class="normal-forms" id=""
+                                                   placeholder="Email Address" value="{{Auth::user()->email ?? old('email')}}" required>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 mb-3">
+                                            <label for="" class="form-labels">Phone *</label>
+                                            <input type="text" name="phone" value="{{Auth::user()->phone ?? old('phone')}}" class="normal-forms" id=""
+                                                   placeholder="Phone Number" required>
+                                        </div>
+
+                                        <div class="col-lg-4 col-md-4 mb-3">
+                                            <label for="" class="form-labels">Gender *</label>
+                                            <select name="gender" id="" class="normal-forms" required>
+                                                <option value="male">Male</option>
+                                                <option value="female">Female</option>
+                                                <option value="other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
                                     <div class="mb-3">
-                                        <label for="" class="form-labels">Street Address</label>
+                                        <label for="" class="form-labels">Street Address *</label>
                                         <input type="text" name="address_1" class="normal-forms mb-2" id=""
-                                               placeholder="Street Address" required>
-                                        <input type="text" name="address_2" class="normal-forms" id=""
+                                               placeholder="Street Address" value="{{Auth::user()->address ?? old('address_1')}}" required>
+                                        <input type="text" name="address_2" class="normal-forms" id="" value="{{old('address_2')}}"
                                                placeholder="Address ( Optional )">
                                     </div>
 
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 mb-3">
-                                            <label for="" class="form-labels">Country</label>
+                                            <label for="" class="form-labels">Country *</label>
                                             <select name="country" id="" class="normal-forms" required>
-                                                <option value="" selected="" disabled="">Select Country</option>
-                                                <option value="Bangladesh">Bangladesh</option>
-
-                                            </select>
+                                                <option value="Bangladesh" selected>Bangladesh</option>
+                                            </select>   
                                         </div>
 
                                         <div class="col-lg-4 col-md-4 mb-3">
-                                            <label for="" class="form-labels">States/Districts</label>
+                                            <label for="" class="form-labels">States/Districts *</label>
                                             <select name="state_district" id="" class="normal-forms" required>
-                                                <option value="" selected="" disabled="">Select States</option>
                                                 <option value="Dhaka">Dhaka</option>
                                             </select>
                                         </div>
 
                                         <div class="col-lg-4 col-md-4 mb-3">
-                                            <label for="" class="form-labels">Zip Code</label>
-                                            <input type="text" name="zip" class="normal-forms" id=""
+                                            <label for="" class="form-labels">Zip Code *</label>
+                                            <input type="text" name="zip" class="normal-forms" id="" value="{{Auth::user()->zip ?? old('zip')}}"
                                                    placeholder="Zip Code" required>
                                         </div>
+                                        
                                     </div>
+
 
                                     <div class="row">
                                         <div class="col-lg-4 col-md-4 mb-3">
-                                            <label for="" class="form-labels">Email</label>
-                                            <input type="text" name="email" class="normal-forms" id=""
-                                                   placeholder="Email Address" required>
+                                            <label for="" class="form-labels">Thana</label>
+                                            <input type="text" name="thana" value="{{Auth::user()->thana ?? old('thana')}}" class="normal-forms" id=""
+                                                   placeholder="Thana">
                                         </div>
 
                                         <div class="col-lg-4 col-md-4 mb-3">
-                                            <label for="" class="form-labels">Phone</label>
-                                            <input type="text" name="phone" class="normal-forms" id=""
-                                                   placeholder="Phone Number" required>
+                                            <label for="" class="form-labels">Area/Subarea</label>
+                                            <input type="text" name="area" value="{{Auth::user()->area ?? old('area')}}"  class="normal-forms" id=""
+                                                   placeholder="Area">
                                         </div>
 
                                         <div class="col-lg-4 col-md-4 mb-3">
                                             <label for="shipping_charge" class="form-labels">Shipping Charge</label>
                                             <select name="shipping_charge" id="shipping_charge" class="normal-forms" onchange="cartCalculation()" required>
-                                                <option value="" selected="" disabled="">Select Shipping Charge</option>
-                                                <option value="60">InSide Dhaka</option>
-                                                <option value="120">OutSide Dhaka</option>
+                                               
+                                                @forelse($deliveryCharges as $deliveryCharge)
+                                                    <option value="{{$deliveryCharge->delivery_charge}}">{{$deliveryCharge->delivery_title}} ({{$deliveryCharge->delivery_charge}})</option>
+                                                @empty
+                                                @endforelse
                                             </select>
                                         </div>
+
                                     </div>
+                                    
                                 </div><!-- End. checkout-form -->
 
                                 <div class="additional-info">
@@ -189,21 +215,21 @@
                                             <label for="cod" class="payment-label">Cash on Delivery</label>
                                         </div><!-- End. payment-form -->
 
-                                        <div class="payment-form">
-                                            <input type="radio" name="payment_method" id="ssl_commercez"
-                                                   value="sslcommerzz">
-                                            <label for="ssl_commercez" class="payment-label">SSL Commercez</label>
-                                        </div><!-- End. payment-form -->
+{{--                                        <div class="payment-form">--}}
+{{--                                            <input type="radio" name="payment_method" id="ssl_commercez"--}}
+{{--                                                   value="sslcommerzz">--}}
+{{--                                            <label for="ssl_commercez" class="payment-label">SSL Commercez</label>--}}
+{{--                                        </div><!-- End. payment-form -->--}}
 
-                                        <div class="payment-form">
-                                            <input type="radio" name="payment_method" id="paypal" value="paypal">
-                                            <label for="paypal" class="payment-label">Paypal</label>
-                                        </div><!-- End. payment-form -->
+{{--                                        <div class="payment-form">--}}
+{{--                                            <input type="radio" name="payment_method" id="paypal" value="paypal">--}}
+{{--                                            <label for="paypal" class="payment-label">Paypal</label>--}}
+{{--                                        </div><!-- End. payment-form -->--}}
 
-                                        <div class="payment-form">
-                                            <input type="radio" name="payment_method" id="stripe" value="stripe">
-                                            <label for="stripe" class="payment-label">Stripe</label>
-                                        </div><!-- End. payment-form -->
+{{--                                        <div class="payment-form">--}}
+{{--                                            <input type="radio" name="payment_method" id="stripe" value="stripe">--}}
+{{--                                            <label for="stripe" class="payment-label">Stripe</label>--}}
+{{--                                        </div><!-- End. payment-form -->--}}
                                     </div><!-- End. payment-method -->
 
 

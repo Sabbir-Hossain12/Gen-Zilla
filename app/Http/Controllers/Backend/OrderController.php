@@ -79,9 +79,14 @@ class OrderController extends Controller
         if (request()->ajax()) {
             return DataTables::of($orders)
                 ->addColumn('customerInfo', function ($order) {
-                    return $order->customer->first_name.' '.$order->customer->first_name.'<br>'.
-                        $order->customer->email.'<br>'.$order->customer->phone;
+                    return '<span class="text-primary">Info</span>'.'<br>'. $order->customer->first_name.' '.$order->customer->first_name.'<br>'.
+                        $order->customer->email.'<br>'.$order->customer->phone.'<br>'.$order->customer->gender
+                        .'<br>' .'<span class="text-primary">Address</span>'.'<br>' .$order->customer->address_1.$order->customer->address_2.
+                        '<br>' .$order->customer->zip.'<br>' .$order->customer->state_district.'<br>' .$order->customer->area.'<br>'.$order->customer->thana;
                 })
+                
+                
+                
                 ->addColumn('date', function ($order) {
                     return $order->created_at->format('d M, Y').'<br>'.$order->created_at->format('h:i A');
                 })

@@ -62,7 +62,6 @@
 
                                     </div>
 
-                                  
 
                                 </div>
                             </div>
@@ -95,32 +94,48 @@
 
                                         </select>
                                     </div>
-                                   
 
 
                                 </div>
                             </div>
                         </div>
-{{-- Quantity Section  --}}
+                        {{-- Quantity Section  --}}
                         <div class="row">
-                            <div class="col-4">  <div class="mb-3">
+                            <div class="col-4">
+                                <div class="mb-3">
                                     <label for="available_qty" class="form-label">Available Quantity *</label>
                                     <input class="form-control" type="number" name="available_qty" min="0"
                                            placeholder="Product Name"
                                            id="available_qty" value="{{$product->productDetail->available_qty}}">
-                                </div></div> 
-                            <div class="col-4"> <div class="mb-3">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
                                     <label for="sold_qty" class="form-label">Sold Quantity *</label>
                                     <input class="form-control" type="number" name="sold_qty" min="0"
                                            placeholder="Product Name"
                                            id="sold_qty" value="{{$product->productDetail->sold_qty}}">
-                                </div></div>
-                            <div class="col-4"> <div class="mb-3">
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="mb-3">
                                     <label for="total_qty" class="form-label">Total Quantity *</label>
                                     <input class="form-control" type="number" name="total_qty" min="0"
                                            placeholder="Product Name"
                                            id="total_qty" value="{{$product->productDetail->total_qty}}">
-                                </div></div>
+                                </div>
+                            </div>
+
+                            <div class="col-4">
+                                <div class="mb-3">
+                                    <label for="purchase_price" class="form-label">Purchase Price *</label>
+                                    <input class="form-control" type="number" name="purchase_price" min="1"
+                                           placeholder="purchase_price"
+                                           id="purchase_price" value="{{$product->productDetail->purchase_price}}">
+
+
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -186,19 +201,18 @@
                                      height="160px">
                             </div>
 
-                          
 
                             <div class="col-lg-8 mb-3">
                                 <label for="product_img" class="form-label">Product Slider Images</label>
                                 <input type="file" class="form-control" name="product_img[]" id="product_img" multiple>
                                 <div id="imagePreviewContainer" class="mt-2"></div>
-                                
+
                                 <div id="sliderImgs">
-                                @foreach($images as $image)
-                                    <img class="mt-2" id="sliderImg"
-                                         src="{{ asset('public/backend/assets/images/uploads/products/'.$image) }}"
-                                         height="160px">
-                                @endforeach
+                                    @foreach($images as $image)
+                                        <img class="mt-2" id="sliderImg"
+                                             src="{{ asset('public/backend/assets/images/uploads/products/'.$image) }}"
+                                             height="160px">
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -251,12 +265,24 @@
 
                                                 <tr>
                                                     <td><span class="attrValueId">{{$weight->attrvalue_id}}</span></td>
-                                                    <td><span class="productWeight">{{$weight->weight_title}}</span></td>
-                                                    <td class="align-items-center"><input type="number" class="productRegularPrice form-control" style="width:80px;" value="{{$weight->productRegularPrice}}" min="1"></td>
-                                                    <td class="align-items-center"><input type="number" class="productDiscount form-control" style="width:80px;" min="1" value="{{$weight->discount_percentage}}"></td>
+                                                    <td><span class="productWeight">{{$weight->weight_title}}</span>
+                                                    </td>
+                                                    <td class="align-items-center"><input type="number"
+                                                                                          class="productRegularPrice form-control"
+                                                                                          style="width:80px;"
+                                                                                          value="{{$weight->productRegularPrice}}"
+                                                                                          min="1"></td>
+                                                    <td class="align-items-center"><input type="number"
+                                                                                          class="productDiscount form-control"
+                                                                                          style="width:80px;" min="1"
+                                                                                          value="{{$weight->discount_percentage}}">
+                                                    </td>
 
 
-                                                    <td><button class="btn btn-sm btn-danger delete-btn"><i class="fa fa-trash"></i></button></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-danger delete-btn"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                    </td>
                                                 </tr>
 
                                             @endforeach
@@ -267,8 +293,7 @@
                                             <td colspan="5">
                                                 <select id="weightVariantList" class="form-control"
                                                         style="width: 100%;">
-                                                    
-                                                 
+
 
                                                 </select>
                                             </td>
@@ -304,11 +329,22 @@
                                                 <tr>
                                                     <td><span class="attrValueId">{{$color->attrvalue_id}}</span></td>
                                                     <td><span class="productColor">{{$color->color_title}}</span></td>
-                                                    <td class="align-items-center"><input type="number" class="productRegularPrice form-control" style="width:80px;" value="{{$color->productRegularPrice}}" min="1"></td>
-                                                    <td class="align-items-center"><input type="number" class="productDiscount form-control" style="width:80px;" min="1" value="{{$color->discount_percentage}}"></td>
+                                                    <td class="align-items-center"><input type="number"
+                                                                                          class="productRegularPrice form-control"
+                                                                                          style="width:80px;"
+                                                                                          value="{{$color->productRegularPrice}}"
+                                                                                          min="1"></td>
+                                                    <td class="align-items-center"><input type="number"
+                                                                                          class="productDiscount form-control"
+                                                                                          style="width:80px;" min="1"
+                                                                                          value="{{$color->discount_percentage}}">
+                                                    </td>
 
 
-                                                    <td><button class="btn btn-sm btn-danger delete-btn"><i class="fa fa-trash"></i></button></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-danger delete-btn"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                    </td>
                                                 </tr>
 
                                             @endforeach
@@ -355,11 +391,22 @@
                                                 <tr>
                                                     <td><span class="attrValueId">{{$size->attrvalue_id}}</span></td>
                                                     <td><span class="productSize">{{$size->size_title}}</span></td>
-                                                    <td class="align-items-center"><input type="number" class="productRegularPrice form-control" style="width:80px;" value="{{$size->productRegularPrice}}" min="1"></td>
-                                                    <td class="align-items-center"><input type="number" class="productDiscount form-control" style="width:80px;" min="1" value="{{$size->discount_percentage}}"></td>
+                                                    <td class="align-items-center"><input type="number"
+                                                                                          class="productRegularPrice form-control"
+                                                                                          style="width:80px;"
+                                                                                          value="{{$size->productRegularPrice}}"
+                                                                                          min="1"></td>
+                                                    <td class="align-items-center"><input type="number"
+                                                                                          class="productDiscount form-control"
+                                                                                          style="width:80px;" min="1"
+                                                                                          value="{{$size->discount_percentage}}">
+                                                    </td>
 
 
-                                                    <td><button class="btn btn-sm btn-danger delete-btn"><i class="fa fa-trash"></i></button></td>
+                                                    <td>
+                                                        <button class="btn btn-sm btn-danger delete-btn"><i
+                                                                    class="fa fa-trash"></i></button>
+                                                    </td>
                                                 </tr>
 
                                             @endforeach
@@ -388,7 +435,9 @@
                                 <div class="col-lg-12">
                                     @foreach($tags as $tag)
                                         <input class="" type="checkbox" name="tag[]" id="tag" value="{{$tag->value}}"
-                                         @if(in_array($tag->value,$checkedTags)) checked @else '' @endif>
+                                               @if(in_array($tag->value,$checkedTags)) checked @else
+                                            ''
+                                        @endif>
                                         {{$tag->value}}
                                     @endforeach
                                 </div>
@@ -403,49 +452,51 @@
             </div> <!-- end col -->
         </div>
         {{--     Meta Information   --}}
-{{--        <div class="row">--}}
-{{--            <div class="col-12">--}}
-{{--                <div class="card">--}}
-{{--                    <div class="card-header">--}}
-{{--                        <h4 class="card-title text-center">Meta Information</h4>--}}
+        {{--        <div class="row">--}}
+        {{--            <div class="col-12">--}}
+        {{--                <div class="card">--}}
+        {{--                    <div class="card-header">--}}
+        {{--                        <h4 class="card-title text-center">Meta Information</h4>--}}
 
-{{--                    </div>--}}
-
-
-{{--                    <div class="card-body p-4">--}}
-
-{{--                        <div class="row">--}}
-{{--                            <div class="card-body">--}}
-{{--                                <div class="col-lg-12 mb-3">--}}
-{{--                                    <label for="meta_title" class="form-label">Meta Title</label>--}}
-{{--                                    <textarea class="form-control" name="meta_title" id="meta_title" cols="30"--}}
-{{--                                              rows="2">{{$product->productDetail->meta_title}}</textarea>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-12 mb-3">--}}
-{{--                                    <label for="meta_key" class="form-label">Meta Key</label>--}}
-{{--                                    <textarea class="form-control" name="meta_key" id="meta_key" cols="30"--}}
-{{--                                              rows="2">{{$product->productDetail->meta_key}}</textarea>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-12 mb-3">--}}
-{{--                                    <label for="meta_desc" class="form-label">Meta Description</label>--}}
-{{--                                    <textarea class="form-control" name="meta_desc" id="meta_desc" cols="30"--}}
-{{--                                              rows="2">{{$product->productDetail->meta_desc}}</textarea>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
+        {{--                    </div>--}}
 
 
-{{--                        </div>--}}
+        {{--                    <div class="card-body p-4">--}}
 
-{{--                        <div class="text-center mt-4 d-grid">--}}
-{{--                            <button id="productSubmit" type="submit" class="btn btn-primary">Submit</button>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+        {{--                        <div class="row">--}}
+        {{--                            <div class="card-body">--}}
+        {{--                                <div class="col-lg-12 mb-3">--}}
+        {{--                                    <label for="meta_title" class="form-label">Meta Title</label>--}}
+        {{--                                    <textarea class="form-control" name="meta_title" id="meta_title" cols="30"--}}
+        {{--                                              rows="2">{{$product->productDetail->meta_title}}</textarea>--}}
+        {{--                                </div>--}}
+        {{--                                <div class="col-lg-12 mb-3">--}}
+        {{--                                    <label for="meta_key" class="form-label">Meta Key</label>--}}
+        {{--                                    <textarea class="form-control" name="meta_key" id="meta_key" cols="30"--}}
+        {{--                                              rows="2">{{$product->productDetail->meta_key}}</textarea>--}}
+        {{--                                </div>--}}
+        {{--                                <div class="col-lg-12 mb-3">--}}
+        {{--                                    <label for="meta_desc" class="form-label">Meta Description</label>--}}
+        {{--                                    <textarea class="form-control" name="meta_desc" id="meta_desc" cols="30"--}}
+        {{--                                              rows="2">{{$product->productDetail->meta_desc}}</textarea>--}}
+        {{--                                </div>--}}
+        {{--                            </div>--}}
 
-{{--                </div>--}}
-{{--            </div> <!-- end col -->--}}
-{{--        </div>--}}
-        
-        <div class="text-center mt-4 d-grid"><button id="productSubmit" type="submit" class="btn btn-primary">Submit</button></div>
+
+        {{--                        </div>--}}
+
+        {{--                        <div class="text-center mt-4 d-grid">--}}
+        {{--                            <button id="productSubmit" type="submit" class="btn btn-primary">Submit</button>--}}
+        {{--                        </div>--}}
+        {{--                    </div>--}}
+
+        {{--                </div>--}}
+        {{--            </div> <!-- end col -->--}}
+        {{--        </div>--}}
+
+        <div class="text-center mt-4 d-grid">
+            <button id="productSubmit" type="submit" class="btn btn-primary">Submit</button>
+        </div>
     </form>
 @endsection
 
@@ -514,9 +565,9 @@
                 // console.log(cProduct);
                 // console.log(sProduct);
                 // console.log(wProduct);
-                
+
                 var formData = new FormData(this);
-                
+
 
                 formData.append('long_desc', long_desc);
 
@@ -527,7 +578,7 @@
                 // Appending Size variant data
                 formData.append('sizeProduct', JSON.stringify(sProduct));
 
-                if ($("#weightVariantTable tbody tr").length == 0 && $("#sizeVariantTable tbody tr").length == 0 && $("#colorVariantTable tbody tr").length == 0 ) {
+                if ($("#weightVariantTable tbody tr").length == 0 && $("#sizeVariantTable tbody tr").length == 0 && $("#colorVariantTable tbody tr").length == 0) {
 
                     swal.fire({
                         title: "Failed",
@@ -579,7 +630,7 @@
             //  CKEditor on Products Desctription
             let data;
             ClassicEditor
-                .create(document.querySelector('#long_Desc'),{
+                .create(document.querySelector('#long_Desc'), {
 
                     ckfinder:
                         {
@@ -598,7 +649,7 @@
             // Show  Slider Images 
             $('#product_img').on('change', function (event) {
                 $('#sliderImgs').hide();
-                
+
                 var imagePreviewContainer = $('#imagePreviewContainer');
                 imagePreviewContainer.empty(); // Clear existing images
 
@@ -768,11 +819,6 @@
         });
 
 
-
-
-
     </script>
-
-
 
 @endpush

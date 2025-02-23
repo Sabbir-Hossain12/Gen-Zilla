@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 
+use App\Models\ProductDetail;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 
@@ -69,6 +70,8 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
+//        dd($request->all());
+       $productDetails= ProductDetail::where('product_id', $request->id)->first();
       
         Cart::add([
             'id' => $request->id,
@@ -81,10 +84,13 @@ class CartController extends Controller
                 'color' => $request->color, 
                 'size' => $request->size,
                 'weight' => $request->weight,
-                'stock'=>$request->stock
+                'stock'=>$request->stock,
+                'purchase_price'=>$productDetails->purchase_price*$request->qty,
+                
             ],
         ]);
         
+//        dd(Cart::content());
 //        return redirect()->back()->with('success', 'Product added to cart successfully.');
         return response()->json(['message'=>'success'],200);
     }
